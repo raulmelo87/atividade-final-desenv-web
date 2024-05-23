@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autenticação</title>
+  <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<header class="fixed-header">
+    <div class="container">
+       <div class="header-content">
+         <h1 class="h1-title">Biblioteca Virtual</h1>               
+           <div class="menu-toggle">
+               <input type="checkbox" id="menu-toggle-checkbox" />
+               <label for="menu-toggle-checkbox">
+                   <span></span>
+                   <span></span>
+                   <span></span>
+               </label>
+               <ul class="menu">
+                   <li><a href="index.html">Página Inicial</a></li>
+                   <li><a href="login.html">Login</a></li>
+                   <li><a href="cadastro.html">Cadastro</a></li>
+                   <li><a href="contato.html">Contato</a></li>
+               </ul>
+           </div>
+       </div>
+   </div>
+</header>   
+
+<main>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="mb-4">Login</h2>
+      <form>
+        <div class="form-group">
+          <label for="username">Usuário</label>
+          <input type="text" class="form-control" id="username" name="username" placeholder="usuario" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Senha</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="senha" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Entrar</button>
+        <a href="index.html" class="btn btn-secondary">Página Inicial</a>
+      </form>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="fixed-footer">
+  <div class="container">
+      <div class="footer-content">
+          <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-whatsapp"></i></a>
+              <a href="https://github.com/raulmelo87/web-library" target="_blank"><i class="fab fa-github"></i></a>
+          </div>
+          <p>&copy; 2024 Equipe 30 ADS - Unifor. Todos os direitos reservados.</p>
+      </div>
+  </div>
+</footer>
+
+<!-- Fone Awesome para os ícones -->
+<script src="https://kit.fontawesome.com/b59749c01b.js" crossorigin="anonymous"></script> 
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+  const loginForm = document.querySelector('form');
+  //const loginForm = document.getElementById('loginForm');
+
+  loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const username = loginForm.querySelector('#username').value;
+    const password = loginForm.querySelector('#password').value;
+
+    console.log('Dados do formulário:', { username, password });
+
+    try {
+      const response = await axios.post('https://web-library-825r.onrender.com/api/login', {
+        username,
+        password
+      });
+
+      console.log(response.data.message);
+      alert("Login feito com sucesso! Faça um bom proveito!", {username});
+      // Redirecionar para a próxima página após o login bem-sucedido
+      window.location.href = 'conteudo.html';
+    } catch (error) {
+      console.error(error.response.data.message);
+      // Exibir mensagem de erro ao usuário
+      alert('Usuário ou senha incorretos. Por favor, verifique os dados e tente novamente.');
+    }
+  });
+</script>
+
+</body>
+</html>
