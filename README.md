@@ -9,10 +9,15 @@ Por se tratar de um serviço gratuito, o carregamento do site pode demorar um po
 Membros da Equipe:
 
 Raul Melo - 2319731
+
 Aderson Oliveira - 2313634
+
 Brenda Carla - 2313604
+
 Emmanuele Forte - 2317647
+
 Luiz Henrique - 2313718
+
 Thamiles Carvalho – 2313706
 
 Desenvolvimento do Projeto
